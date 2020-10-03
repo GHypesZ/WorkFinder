@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "841290805238",
+    "firebase_url": "https://app-workfinder.firebaseio.com",
+    "project_id": "app-workfinder",
+    "storage_bucket": "app-workfinder.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:841290805238:android:0241268a72721832c021d7",
+        "android_client_info": {
+          "package_name": "com.workfinder"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "841290805238-s0v0niquvqkqu103hic7s33pqv9rediq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBcnG32VEueM8OUEsib-OD-vFsiOPofj7A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "841290805238-s0v0niquvqkqu103hic7s33pqv9rediq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:841290805238:android:d115aaa06bc1bcecc021d7",
+        "android_client_info": {
+          "package_name": "com.workfinder1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "841290805238-s0v0niquvqkqu103hic7s33pqv9rediq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBcnG32VEueM8OUEsib-OD-vFsiOPofj7A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "841290805238-s0v0niquvqkqu103hic7s33pqv9rediq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
