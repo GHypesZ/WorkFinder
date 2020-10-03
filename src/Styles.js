@@ -97,7 +97,8 @@ export default StyleSheet.create({
     },
     TituloTextBox:{
       alignItems: "flex-start",
-      fontSize:18
+      fontSize:18,
+      fontWeight:"bold"
     },
     telaProfile:{
       alignItems: "flex-start",
@@ -116,14 +117,31 @@ export default StyleSheet.create({
       "backgroundColor": "#404CB1"
     },
     ListaProfissionais:{
-      flex: 1, 
-      alignItems: 'flex-start', 
-      justifyContent: 'center', 
+      flex: 1,
+      flexWrap:"wrap", 
+      flexShrink:1,
+      flexDirection:"row",
+      alignItems: 'center', 
+      justifyContent: 'flex-start', 
       borderColor:"#404CB1", 
-      borderWidth:1, 
+      borderWidth:2, 
       marginHorizontal:10, 
       padding:10, 
-      marginTop:10
+      marginTop:10,
+      backgroundColor:"#EFEFEF"
+    },
+    TextoLista:{
+      flex: 1,
+      paddingRight:30,
+      flexWrap:"wrap", 
+      flexShrink:1,
+      flexDirection:"column",
+      margin:10,
+      justifyContent:"flex-start",
+      alignItems:"flex-start"
+    },
+    TextoNormal:{
+      fontSize:18
     }
 
 })

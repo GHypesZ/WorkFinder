@@ -50,9 +50,14 @@ export default function Listagem(){
                 renderItem={({item})=>(
                     <TouchableOpacity>
                         <View style={Estilo.ListaProfissionais}>
-                            <Text> {item.nome}</Text>
-                            <Text>{item.especialidade}</Text>
-                            <Text>{item.faculdade}</Text>
+                          <View style={{width:90, height:90, backgroundColor:"#404CB1", borderRadius:50,justifyContent:"center",alignItems:"center"}}>
+                            <Text style={[Estilo.textoMedioBranco]}>Foto</Text>
+                          </View>
+                          <View style={[Estilo.TextoLista]}>
+                            <Text style={{fontWeight:'bold', fontSize:18}}>Nome: </Text><Text style={{fontSize:18}}>{item.nome}</Text>
+                            <Text style={{fontWeight:'bold', fontSize:16}}>Área de Atuação: </Text><Text style={{fontSize:16}}>{item.areaAtuacao}</Text>
+                            <Text style={{fontWeight:'bold', fontSize:16}}>Especialidade: </Text><Text style={{fontSize:16}}>{item.especialidade}</Text>
+                          </View> 
                         </View>
                     </TouchableOpacity>
                     
