@@ -7,7 +7,7 @@ import { useRoute } from '@react-navigation/native';
 
 
 
-export default function Listagem(){
+export default function Listagem({navigation}){
         const route = useRoute();
         const {area} = route.params;
 
@@ -17,7 +17,7 @@ export default function Listagem(){
           
             useEffect(() => {
               const subscriber = firestore()
-                .collection('users').where("areaAtuacao", "==", area)
+                .collection('users').where("areaAtuacao", "==", area).where("disponivel", "==", "Sim")
                 .onSnapshot(querySnapshot => {
                     const users = [];
               
@@ -48,7 +48,13 @@ export default function Listagem(){
                 </View>
                 <FlatList data={users}
                 renderItem={({item})=>(
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={() =>navigation.push("WorkProfile",  {nome: item.nome, 
+                      tempo: item.tempoExperiencia,
+                      areadeAtuacao: item.areaAtuacao,
+                      facul: item.faculdade,
+                      especi: item.especialidade,
+                      Email: item.email
+                      })}>
                         <View style={Estilo.ListaProfissionais}>
                           <View style={{width:90, height:90, backgroundColor:"#404CB1", borderRadius:50,justifyContent:"center",alignItems:"center"}}>
                             <Text style={[Estilo.textoMedioBranco]}>Foto</Text>

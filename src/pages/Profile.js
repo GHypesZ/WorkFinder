@@ -49,13 +49,20 @@ export default class Profile extends Component {
                     <Text style = {[Estilos.textoMedioBranco]} > Foto </Text>
                 </View>
                 <View style={Estilos.telaProfile}>
-                    <Text style={Estilos.TituloTextBox}>Nome: </Text><Text style={[Estilos.TextoNormal]}>{this.state.nome}</Text>
-                    <Text style={Estilos.TituloTextBox}>Tempo de Experiencia: </Text><Text style={[Estilos.TextoNormal]}>{this.state.tempoExperiencia}</Text>
-                    <Text style={Estilos.TituloTextBox}>Área de Atuação: </Text><Text style={[Estilos.TextoNormal]}>{this.state.areaAtuacao}</Text>
-                    <Text style={Estilos.TituloTextBox}>Faculdade Cursada: </Text><Text style={[Estilos.TextoNormal]}>{this.state.faculdade}</Text>
-                    <Text style={Estilos.TituloTextBox}>Especialidade: </Text><Text style={[Estilos.TextoNormal]}>{this.state.especialidade}</Text>
-                    <Text style={Estilos.TituloTextBox}>Disponivel para Trabalho: </Text><Text style={[Estilos.TextoNormal]}>{this.state.disponivel}</Text>
-                    <Text style={Estilos.TituloTextBox}>Email: </Text><Text style={[Estilos.TextoNormal]}>{this.state.email}</Text>
+                    <Text style={Estilos.TituloTextBox}>Nome: </Text>
+                    <Text style={[Estilos.TextoNormal]}>{this.state.nome}</Text>
+                    <Text style={Estilos.TituloTextBox}>Tempo de Experiencia: </Text>
+                    <Text style={[Estilos.TextoNormal]}>{this.state.tempoExperiencia}</Text>
+                    <Text style={Estilos.TituloTextBox}>Área de Atuação: </Text>
+                    <Text style={[Estilos.TextoNormal]}>{this.state.areaAtuacao}</Text>
+                    <Text style={Estilos.TituloTextBox}>Faculdade Cursada: </Text>
+                    <Text style={[Estilos.TextoNormal]}>{this.state.faculdade}</Text>
+                    <Text style={Estilos.TituloTextBox}>Especialidade: </Text>
+                    <Text style={[Estilos.TextoNormal]}>{this.state.especialidade}</Text>
+                    <Text style={Estilos.TituloTextBox}>Disponivel para Trabalho: </Text>
+                    <Text style={[Estilos.TextoNormal]}>{this.state.disponivel}</Text>
+                    <Text style={Estilos.TituloTextBox}>Email: </Text>
+                    <Text style={[Estilos.TextoNormal]}>{this.state.email}</Text>
 
                     <TouchableOpacity onPress={()=> this.props.navigation.navigate("Update Info")}>
                         <Text style={Estilos.btnExtras}>Editar Info</Text>
