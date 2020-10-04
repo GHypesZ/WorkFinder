@@ -25,6 +25,7 @@ export default class AddInfo extends Component {
                     faculdade: doc.data().faculdade,
                     especialidade: doc.data().especialidade,
                     disponivel: doc.data().disponivel,
+                    numero: doc.data().numero
             })
         })
     }
@@ -35,7 +36,8 @@ export default class AddInfo extends Component {
             areaAtuacao:"",
             faculdade:"",
             especialidade:"",
-            disponivel:"",  
+            disponivel:"",
+            numero:""  
     }
     addInfo = async ()=> {
         if(this.state.disponivel != null){
@@ -46,7 +48,8 @@ export default class AddInfo extends Component {
                 areaAtuacao: this.state.areaAtuacao,
                 faculdade: this.state.faculdade,
                 especialidade: this.state.especialidade,
-                disponivel: this.state.disponivel
+                disponivel: this.state.disponivel,
+                numero: this.state.numero
             })
             this.props.navigation.navigate("Perfil")
         }
@@ -75,6 +78,7 @@ export default class AddInfo extends Component {
                     <Text style= {{marginLeft:5,"fontSize": 18}}>{auth().currentUser.email}</Text>
                     </View>
                     <View style={Estilos.espacadorDez}/>
+                    <View style={Estilos.espacadorDez}/>
                     <Text style={Estilos.TituloTextBox}>Disponível para Trabalho?</Text>
                     <View style={Estilos.espacadorDez}/>
                     <DropDownPicker items={[{label: "Sim", value:"Sim"},
@@ -86,7 +90,6 @@ export default class AddInfo extends Component {
                     itemStyle={{
                         width:311,
                         justifyContent: 'flex-start',
-                        fontSize: 18,
                     }}
                     onChangeItem={item => this.setState({disponivel: item.value})}/>    
                     <View style={Estilos.espacadorDez}/>
@@ -110,7 +113,6 @@ export default class AddInfo extends Component {
                     itemStyle={{
                         width:311,
                         justifyContent: 'flex-start',
-                        fontSize: 18,
                     }}
                     onChangeItem={item => this.setState({areaAtuacao: item.value})}/>
                     <View style={Estilos.espacadorDez}/>
