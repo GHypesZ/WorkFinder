@@ -1,6 +1,6 @@
 import React, {Component, useState, useEffect} from 'react';
 import Estilo from "../Styles";
-import {Text, View, StatusBar, TouchableOpacity, FlatList, ActivityIndicator } from "react-native";
+import {Text, View, StatusBar, TouchableOpacity, FlatList } from "react-native";
 import SafeAreaView from 'react-native-safe-area-view';
 import firestore from '@react-native-firebase/firestore';
 import { useRoute } from '@react-navigation/native';
@@ -12,7 +12,6 @@ export default function Listagem({navigation}){
         const {area} = route.params;
 
 
-            const [loading, setLoading] = useState(true); // Set loading to true on component mount
             const [users, setUsers] = useState([]); // Initial empty array of users
           
             useEffect(() => {
@@ -29,15 +28,10 @@ export default function Listagem({navigation}){
                     });
               
                     setUsers(users);
-                    setLoading(false);
                   });
               
                 return () => subscriber();
             }, []);
-          
-            if (loading) {
-              return <ActivityIndicator />;
-            }
 
         return(
             <SafeAreaView>

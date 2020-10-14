@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 import Estilo from "../Styles";
 import auth from "@react-native-firebase/auth";
+import firestore from '@react-native-firebase/firestore';
 
 export default class Registro extends Component{
     constructor(){
@@ -33,12 +34,24 @@ export default class Registro extends Component{
                 res.user.updateProfile({
                     displayName: this.state.nome,
                 })
+                firestore().collection('users').add({
+                    nome: this.state.nome,
+                    email: auth().currentUser.email,
+                    uid: auth().currentUser.uid,
+                    tempoExperiencia: "",
+                    areaAtuacao: "",
+                    faculdade: "",
+                    especialidade: "",
+                    disponivel: "Nao",
+                    numero: ""
+                })
                 this.setState({
                     nome:'',
                     email:'',
                     password:'',
                     isLoading: false,
                 })
+                
                 this.props.navigation.navigate("LogIn")
             })
         }

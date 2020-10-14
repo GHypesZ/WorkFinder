@@ -14,36 +14,48 @@ import firestore from '@react-native-firebase/firestore';
 
 
 export default class AddInfo extends Component {
+    state={
+        docId:"",
+        nome:"",
+        email:"",
+        tempoExperiencia:"",
+        areaAtuacao:"",
+        faculdade:"",
+        especialidade:"",
+        disponivel:"",
+        numero:""  
+}
     constructor(){
         super();
-        usuario = firestore().collection("users").doc(auth().currentUser.uid).onSnapshot(doc => {
-            this.setState({
-                    nome: doc.data().nome,
-                    email: doc.data().email,
-                    tempoExperiencia: doc.data().tempoExperiencia,
-                    areaAtuacao: doc.data().areaAtuacao,
-                    faculdade: doc.data().faculdade,
-                    especialidade: doc.data().especialidade,
-                    disponivel: doc.data().disponivel,
-                    numero: doc.data().numero
-            })
-        })
-    }
-    state={
-            nome:"",
-            email:"",
-            tempoExperiencia:"",
-            areaAtuacao:"",
-            faculdade:"",
-            especialidade:"",
-            disponivel:"",
-            numero:""  
+        this.subscriber = firestore()
+                .collection('users').where("uid", "==", auth().currentUser.uid)
+                .onSnapshot(querySnapshot => {
+                    const users = [];
+              
+                    querySnapshot.forEach(documentSnapshot => {
+                      users.push({
+                        ...documentSnapshot.data(),
+                        key: documentSnapshot.id,
+                      });
+                    });
+                    this.setState({
+                        docId: users[0].key,
+                        nome:users[0].nome,
+                        email:users[0].email,
+                        tempoExperiencia:users[0].tempoExperiencia,
+                        areaAtuacao:users[0].areaAtuacao,
+                        faculdade:users[0].faculdade,
+                        especialidade:users[0].especialidade,
+                        disponivel:users[0].disponivel,
+                        numero:users[0].numero
+                    });
+                  });
     }
     addInfo = async ()=> {
         if(this.state.disponivel != null){
-            firestore().collection('users').doc(auth().currentUser.uid).update({
-                nome: auth().currentUser.displayName,
-                email: auth().currentUser.email,
+            firestore().collection('users').doc(this.state.docId).update({
+                nome: this.state.nome,
+                email: this.state.email,
                 tempoExperiencia: this.state.tempoExperiencia,
                 areaAtuacao: this.state.areaAtuacao,
                 faculdade: this.state.faculdade,

@@ -11,32 +11,41 @@ import firestore from '@react-native-firebase/firestore';
 
 
 export default class Profile extends Component {
-
+        state={
+            nome:"",
+            email:"",
+            tempoExperiencia:"",
+            areaAtuacao:"",
+            faculdade:"",
+            especialidade:"",
+            disponivel:"",
+            numero:""  
+    	}
     constructor(){
         super();
-        this.getUser();
-    }
-    state={
-        nome:"",
-        email:"",
-        tempoExperiencia:"",
-        areaAtuacao:"",
-        faculdade:"",
-        especialidade:"",
-        disponivel:"", 
-}
-    getUser = async ()=>{
-        const UserDoc = await firestore().collection('users').doc(auth().currentUser.uid).onSnapshot(doc =>{
-            this.setState({
-                    nome : doc.data().nome,
-                    email: doc.data().email,
-                    tempoExperiencia: doc.data().tempoExperiencia,
-                    areaAtuacao: doc.data().areaAtuacao,
-                    faculdade: doc.data().faculdade,
-                    especialidade: doc.data().especialidade,
-                    disponivel: doc.data().disponivel,
-            })
-        })
+        this.subscriber = firestore()
+                .collection('users').where("uid", "==", auth().currentUser.uid)
+                .onSnapshot(querySnapshot => {
+                    const users = [];
+              
+                    querySnapshot.forEach(documentSnapshot => {
+                      users.push({
+                        ...documentSnapshot.data(),
+                        key: documentSnapshot.id,
+                      });
+                      console.log(users[0])
+                    });
+                    this.setState({
+                        nome:users[0].nome,
+                        email:users[0].email,
+                        tempoExperiencia:users[0].tempoExperiencia,
+                        areaAtuacao:users[0].areaAtuacao,
+                        faculdade:users[0].faculdade,
+                        especialidade:users[0].especialidade,
+                        disponivel:users[0].disponivel,
+                        numero:users[0].numero
+                    });
+                  });
     }
     render(){
         return(
