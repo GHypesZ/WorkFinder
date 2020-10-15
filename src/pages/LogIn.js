@@ -6,11 +6,13 @@ import {
   TextInput,
   TouchableOpacity,
   Alert,
-  StatusBar, Image
+  StatusBar, 
+  Image,
 } from 'react-native';
 import SafeAreaView from 'react-native-safe-area-view';
 import Estilo from "../Styles";
 import auth from "@react-native-firebase/auth";
+import {Input, Button} from "react-native-elements"
 
 export default class LogIn extends Component {
   constructor(){
@@ -39,35 +41,24 @@ export default class LogIn extends Component {
     return(
       <SafeAreaView style = {[Estilo.tela]}>
         <StatusBar barStyle="dark-content" backgroundColor="#EFEFEF"/>
-        <View style = {[Estilo.tela]} >
-      <View>
+        <View>
+      <View style={Estilo.tela1}>
           <Image source={require("../imagens/LogoWorkFinderAzul.png")} resizeMode= "stretch" style={{width:250, height:200}}></Image>
       </View>
-      <View style = {Estilo.espacadorVinte} >
-        <TextInput style = {[Estilo.textBoxLogIn]} placeholder="Usuário:" placeholderTextColor="black" value={this.state.email}
-        onChangeText={email => this.setState({email})}></TextInput>
+      <View style = {Estilo.Inputs} >
+        <Input label=" Seu Email:" placeholder="email@email.com" leftIcon={{type: "font-awsome", name: "email"}} onChangeText={email => this.setState({email})}></Input>
       </View>
-      <View style = {Estilo.espacadorDez} >
-        <TextInput secureTextEntry={true} style = {[Estilo.textBoxLogIn]} placeholder="Senha:" placeholderTextColor="black" value={this.state.password}
-         onChangeText={password => this.setState({password})}></TextInput>
+      <View style = {Estilo.Inputs} >
+        <Input label="Senha:" leftIcon={{type: "font-awsome", name: "lock"}} secureTextEntry={true} placeholder="******"
+         onChangeText={password => this.setState({password})}></Input>
       </View>
-      <View style = {Estilo.espacadorDez} >
+      <View style = {Estilo.Inputs} >
         <View>
-          <TouchableOpacity style = {Estilo.btnEntrar} onPress={this.login}>
-            <Text style = {Estilo.textoMedioBranco} > Entrar </Text>
-          </TouchableOpacity>
+          <Button buttonStyle={{backgroundColor:"#404CB1"}} raised type="solid" title="Entrar" onPress={this.login}></Button>
         </View>
       </View>
-      <View style={Estilo.espacadorDez}>
-        <TouchableOpacity onPress={() =>{Alert.alert('OK')}}>
-          <Text style = {Estilo.btnExtras} > Esqueci a senha </Text>
-        </TouchableOpacity>
-      </View>
-      <View style={Estilo.espacadorDez}>
-        <TouchableOpacity onPress={() =>this.props.navigation.navigate("Registro")}>
-          <Text style = {Estilo.btnExtras} > Criar uma conta </Text>
-        </TouchableOpacity>
-      </View>
+        <Button type="clear" title="Esqueci a senha" raised titleStyle={{color:"#404CB1", textDecorationLine: "underline"}} onPress={() =>{Alert.alert('OK')}}></Button>
+        <Button type="clear" title="Criar uma conta" raised titleStyle={{color:"#404CB1", textDecorationLine: "underline"}} onPress={() =>this.props.navigation.navigate("Registro")}></Button>
     </View>
       </SafeAreaView>
       

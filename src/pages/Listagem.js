@@ -4,6 +4,7 @@ import {Text, View, StatusBar, TouchableOpacity, FlatList } from "react-native";
 import SafeAreaView from 'react-native-safe-area-view';
 import firestore from '@react-native-firebase/firestore';
 import { useRoute } from '@react-navigation/native';
+import {ListItem} from "react-native-elements";
 
 
 
@@ -40,6 +41,7 @@ export default function Listagem({navigation}){
                     <Text style={[Estilo.textoGrandeBranco]}>Profissionais de {area}</Text>
                     <View style={[Estilo.espacadorDez]}/>
                 </View>
+
                 <FlatList data={users}
                 renderItem={({item})=>(
                     <TouchableOpacity onPress={() =>navigation.push("WorkProfile",  {nome: item.nome, 
@@ -49,16 +51,14 @@ export default function Listagem({navigation}){
                       especi: item.especialidade,
                       Email: item.email
                       })}>
-                        <View style={Estilo.ListaProfissionais}>
-                          <View style={{width:90, height:90, backgroundColor:"#404CB1", borderRadius:50,justifyContent:"center",alignItems:"center"}}>
-                            <Text style={[Estilo.textoMedioBranco]}>Foto</Text>
-                          </View>
-                          <View style={[Estilo.TextoLista]}>
-                            <Text style={{fontWeight:'bold', fontSize:18}}>Nome: </Text><Text style={{fontSize:18}}>{item.nome}</Text>
-                            <Text style={{fontWeight:'bold', fontSize:16}}>Área de Atuação: </Text><Text style={{fontSize:16}}>{item.areaAtuacao}</Text>
-                            <Text style={{fontWeight:'bold', fontSize:16}}>Especialidade: </Text><Text style={{fontSize:16}}>{item.especialidade}</Text>
-                          </View> 
-                        </View>
+                        <ListItem bottomDivider
+                        leftAvatar={{title: item.nome[0],
+                        showAccessory: false
+                        }}
+                        title={item.nome}
+                        subtitle={item.especialidade}
+                        c
+                        />
                     </TouchableOpacity>
                     
                     

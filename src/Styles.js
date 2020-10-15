@@ -31,21 +31,27 @@ export default StyleSheet.create({
         flex: 1,
         backgroundColor: "#EFEFEF"
       },
+      tela1:{
+        alignItems: "center",
+        justifyContent: "center",
+        backgroundColor: "#EFEFEF"
+      },
       Logo:{
         "alignItems": "center",
         justifyContent: "center",
         "width": 190,
         "height": 190,
         "borderRadius": 100,
-        "backgroundColor": "#404CB1"
+        "backgroundColor": "#404CB1",
       },
       espacadorDez:{
-        "alignItems": "flex-start",
+        alignContent:"center",
         "marginTop": 10
       },
-      espacadorVinte:{
-        "alignItems": "flex-start",
-        "marginTop": 20
+      Inputs:{
+        alignContent: "center",
+        "marginTop": 10,
+        width:330
       },
       btnEntrar:{
         "alignItems": "center",

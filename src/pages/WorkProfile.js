@@ -2,16 +2,16 @@ import React, {Component} from "react";
 import {Text,
 View,
 StatusBar,
-TouchableOpacity
+TouchableOpacity,
+FlatList
 } from "react-native";
 import Estilos from "../Styles";
 import SafeAreaView from 'react-native-safe-area-view';
-import { useRoute } from '@react-navigation/native';
+
 
 
 export default function WorkProfile({route}){
-    //const route = useRoute();
-    //const {prof} = route.params;
+
 
         return(
             <SafeAreaView style={Estilos.safe}>
@@ -35,6 +35,11 @@ export default function WorkProfile({route}){
                     <Text style={[Estilos.TextoNormal]}>{route.params.especi}</Text>
                     <Text style={Estilos.TituloTextBox}>Email: </Text>
                     <Text style={[Estilos.TextoNormal]}>{route.params.Email}</Text>
+                </View>
+                <View>
+                    <FlatList>
+                        
+                    </FlatList>
                 </View>
                 
             </SafeAreaView>
