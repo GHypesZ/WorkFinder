@@ -50,7 +50,7 @@ export default StyleSheet.create({
       },
       Inputs:{
         alignContent: "center",
-        "marginTop": 10,
+        marginTop: 10,
         width:330
       },
       btnEntrar:{
