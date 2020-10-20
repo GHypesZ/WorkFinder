@@ -4,7 +4,7 @@ import {Text, View, StatusBar, TouchableOpacity, FlatList } from "react-native";
 import SafeAreaView from 'react-native-safe-area-view';
 import firestore from '@react-native-firebase/firestore';
 import { useRoute } from '@react-navigation/native';
-import {ListItem} from "react-native-elements";
+import {Avatar, ListItem} from "react-native-elements";
 
 
 
@@ -51,14 +51,16 @@ export default function Listagem({navigation}){
                       especi: item.especialidade,
                       Email: item.email
                       })}>
-                        <ListItem bottomDivider
-                        leftAvatar={{title: item.nome[0],
-                        showAccessory: false
-                        }}
-                        title={item.nome}
-                        subtitle={item.especialidade}
-                        c
-                        />
+                        <ListItem bottomDivider>
+                          <Avatar
+                          rounded
+                          icon={{name:"account-circle"}}
+                          />
+                          <ListItem.Content>
+                            <ListItem.Title>{item.nome}</ListItem.Title>
+                            <ListItem.Subtitle>{item.especialidade}</ListItem.Subtitle>
+                          </ListItem.Content>
+                        </ListItem>
                     </TouchableOpacity>
                     
                     

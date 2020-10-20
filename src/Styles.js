@@ -34,7 +34,7 @@ export default StyleSheet.create({
       tela1:{
         alignItems: "center",
         justifyContent: "center",
-        backgroundColor: "#EFEFEF"
+        backgroundColor: "#EFEFEF",
       },
       Logo:{
         "alignItems": "center",
@@ -68,10 +68,11 @@ export default StyleSheet.create({
         "color": "#404CB1",
       },
       BoxTitulo:{
-        justifyContent: "center",
-        alignItems: "center",
         height: 40,
-        backgroundColor: "#404CB1",
+        width:500,
+        backgroundColor:"#404CB1", 
+        alignItems:"center", 
+        paddingBottom:10
       },
       textoGrandeBranco:{
         "fontFamily": "Georgia",
@@ -99,7 +100,7 @@ export default StyleSheet.create({
       color:"#000000"
     },
     safe:{
-      flex:1
+      flex:1,
     },
     TituloTextBox:{
       alignItems: "flex-start",

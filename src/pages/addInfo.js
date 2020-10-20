@@ -11,6 +11,8 @@ import Estilos from "../Styles";
 import SafeAreaView from 'react-native-safe-area-view';
 import auth from "@react-native-firebase/auth";
 import firestore from '@react-native-firebase/firestore';
+import {Input, Button} from "react-native-elements"
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 
 export default class AddInfo extends Component {
@@ -23,7 +25,7 @@ export default class AddInfo extends Component {
         faculdade:"",
         especialidade:"",
         disponivel:"",
-        numero:""  
+        numero:"" ,
 }
     constructor(){
         super();
@@ -49,8 +51,9 @@ export default class AddInfo extends Component {
                         disponivel:users[0].disponivel,
                         numero:users[0].numero
                     });
-                  });
+                  });               
     }
+    
     addInfo = async ()=> {
         if(this.state.disponivel != null){
             firestore().collection('users').doc(this.state.docId).update({
@@ -69,6 +72,7 @@ export default class AddInfo extends Component {
             Alert.alert("Preencha os campos")
         }
         }
+
     render(){
         return(
             <SafeAreaView style={Estilos.safe}>
@@ -78,19 +82,39 @@ export default class AddInfo extends Component {
             	</View>
                 <ScrollView>
                 <View style={Estilos.tela}>
-                    <View style={Estilos.espacadorDez}/>
-                    <Text style={Estilos.TituloTextBox}>Nome:</Text>
-                    <View style={Estilos.textBoxLogIn}>
-                    <Text style= {{marginLeft:5,"fontSize": 18}}>{auth().currentUser.displayName}</Text>
+                    <View style={Estilos.Inputs}>
+                        <Input
+                        label="Nome:"
+                        placeholder={this.state.nome}
+                        disabled
+                        placeholderTextColor="black"
+                        />
+                        <Input
+                        label="Email:"
+                        placeholder={this.state.email}
+                        disabled
+                        placeholderTextColor="black"
+                        leftIcon={{type: "font-awsome", name: "email"}}
+                        />
+                        <View style={{flexDirection:"row", width:290}}>
+                            <Input
+                            disabled
+                            placeholder={this.state.disponivel}
+                            placeholderTextColor="black"
+                            leftIcon={{type:"fotn-awsome", name:"arrow-right"}}
+                            />
+                            <Button
+                            icon={<Icon
+                            name="caret-down"
+                            size={20}
+                            color="#ffffff"
+                            />
+                            }
+                            buttonStyle={{backgroundColor:"#404CB1"}}
+                            />
+                        </View>
                     </View>
-                    <View style={Estilos.espacadorDez}/>
-                    <View style={Estilos.espacadorDez}/>
-                    <Text style={Estilos.TituloTextBox}>Email:</Text>
-                    <View style={Estilos.textBoxLogIn}>
-                    <Text style= {{marginLeft:5,"fontSize": 18}}>{auth().currentUser.email}</Text>
-                    </View>
-                    <View style={Estilos.espacadorDez}/>
-                    <View style={Estilos.espacadorDez}/>
+                    
                     <Text style={Estilos.TituloTextBox}>Disponível para Trabalho?</Text>
                     <View style={Estilos.espacadorDez}/>
                     <DropDownPicker items={[{label: "Sim", value:"Sim"},

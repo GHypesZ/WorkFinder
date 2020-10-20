@@ -6,12 +6,15 @@ import {
   TouchableOpacity,
   Alert,
   StatusBar,
-  SafeAreaView
+  SafeAreaView,
+  ActivityIndicator,
+  KeyboardAvoidingView
 } from 'react-native';
 import Estilo from "../Styles";
 import auth from "@react-native-firebase/auth";
 import firestore from '@react-native-firebase/firestore';
-import {Input, Button, Image} from "react-native-elements"
+import {Input, Button, Image, Header} from "react-native-elements"
+
 
 export default class Registro extends Component{
     constructor(){
@@ -25,16 +28,23 @@ export default class Registro extends Component{
     }
 
     Cadastro = () => {
-        if(this.state.email == "" && this.state.password == ""){
-            Alert.alert("Campos não preenchidos.");
+        if(this.state.email == ""){
+            Alert.alert("insira um email valido.");
+            this.setState({isLoading: false})
+        }else if(this.state.password == "" ){
+            Alert.alert("insira uma senha valida.");
+            this.setState({isLoading: false})
+        }else if(this.state.nome==""){
+            Alert.alert("insira um Nome.");
+            this.setState({isLoading: false})
         }else{
-            try{
-                this.setState({
-                    isLoading: true,
-                })
+                this.setState({isLoading: true})
                     auth().createUserWithEmailAndPassword(this.state.email, this.state.password).then((res)=>{
                     res.user.updateProfile({
                         displayName: this.state.nome,
+                    }).catch((error)=>{
+                        this.setState({isLoading:false})
+                            Alert.alert(error.code);
                     })
                     firestore().collection('users').add({
                         nome: this.state.nome,
@@ -44,7 +54,7 @@ export default class Registro extends Component{
                         areaAtuacao: "",
                         faculdade: "",
                         especialidade: "",
-                        disponivel: "Nao",
+                        disponivel: "Não",
                         numero: ""
                     })
                     this.setState({
@@ -56,25 +66,32 @@ export default class Registro extends Component{
                     
                     this.props.navigation.navigate("LogIn")
                 })
-            }catch(err){
-                Alert.alert("Email ja em uso")
+                
             }
-        }
     }
 
     render(){
         return(
-            <SafeAreaView style={[Estilo.safe]}>
+            <SafeAreaView >
+                 <Header 
+                centerComponent={{text:"Criar Conta", style:{color:"#ffffff",fontSize:24}}}
+                containerStyle={{backgroundColor:"#404CB1",
+                justifyContent:"center",
+                }}
+                />                
+                <KeyboardAvoidingView
+                behavior="position"
+                keyboardVerticalOffset={-60}
+                style={{justifyContent:"center", alignItems:"center"}}>
+                       
                 <StatusBar barStyle="light-content" backgroundColor="#404CB1"/>
-                <View style={Estilo.BoxTitulo}>
-                    <Text style={Estilo.textoGrandeBranco}>Criar uma Conta</Text>
-                </View>
-                <View style={Estilo.tela}>
-                    <Image 
-                    source={require("../imagens/LogoWorkFinderAzul.png")} 
-                    resizeMode= "stretch" 
-                    style={{width:250, height:200}}
-                    />
+                    <View style={{alignItems:"center"}}>
+                        <Image
+                        source={require("../imagens/LogoWorkFinderAzul.png")} 
+                        resizeMode= "stretch" 
+                        style={{width:250, height:200, marginBottom:100, marginTop:20}}
+                        />
+                    </View>
                     <View style={Estilo.Inputs}>
                     <Input  
                     label=" Insira seu Nome:" 
@@ -94,6 +111,7 @@ export default class Registro extends Component{
                     placeholder="******"
                     onChangeText={password => this.setState({password})}
                     />
+                    
                     <Button 
                     buttonStyle={{backgroundColor:"#404CB1"}} 
                     raised 
@@ -108,8 +126,14 @@ export default class Registro extends Component{
                     titleStyle={{color:"#404CB1", textDecorationLine: "underline"}}  
                     onPress={()=> this.props.navigation.navigate("LogIn")}
                     />
+                    <ActivityIndicator
+                    size="large" 
+                    color="#404CB1"
+                    animating={this.state.isLoading}
+                    />
+                    
                     </View>
-                </View>
+                    </KeyboardAvoidingView>
             </SafeAreaView>
             
         );

@@ -6,6 +6,7 @@ import TabPages from "./TabPages";
 import LogIn from "./pages/LogIn";
 import Registro from "./pages/Registro";
 
+
 const Stack = createStackNavigator();
 
 

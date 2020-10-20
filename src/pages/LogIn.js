@@ -2,12 +2,11 @@
 import React, {Component} from 'react';
 import {
   View,
-  Text,
-  TextInput,
-  TouchableOpacity,
   Alert,
   StatusBar, 
   Image,
+  KeyboardAvoidingView,
+  Platform,
 } from 'react-native';
 import SafeAreaView from 'react-native-safe-area-view';
 import Estilo from "../Styles";
@@ -21,23 +20,37 @@ export default class LogIn extends Component {
       email: "",
       password: "",
       isAuthenticated: false,
+      isLoading:false
     };
   }
   
   
   login = async () => {
+      this.setState({isLoading:true})
       const {email, password} = this.state;
-      if(this.state.email == "" && this.state.password == ""){
+      if(this.state.email == "" || this.state.password == ""){
         Alert.alert("Campos não preenchidos.");
+        this.setState({isLoading:false})
       }else{
-
         try {
           const user  = await auth().signInWithEmailAndPassword(email, password);
-          this.setState({ isAuthenticated: true});
+          this.setState({ isAuthenticated: true, isLoading:false});
           {this.state.isAuthenticated ? this.props.navigation.navigate("HomePage", this.state.email) : null}
           console.log(user);
         }catch (err){
-          Alert.alert("Email ou senha incorretos")
+          this.setState({isLoading:false})
+          switch(err.code){
+            case "auth/wrong-password":
+                Alert.alert("Senha Incorreta!");
+                break;
+            case "auth/invalid-email":
+                Alert.alert("Email não encontrado!");
+                break;
+            case "auth/user-not-found":
+              Alert.alert("Usuario não encontrado!");
+              break;
+
+        }
         }
       }
   }
@@ -49,13 +62,18 @@ export default class LogIn extends Component {
         barStyle="dark-content" 
         backgroundColor="#EFEFEF"
         />
-      <View style={Estilo.tela1}>
+        <View style={Estilo.tela1}>
           <Image 
           source={require("../imagens/LogoWorkFinderAzul.png")} 
           resizeMode= "stretch" 
-          style={{width:250, height:200}}
+          style={{width:250, height:200, marginBottom:160}}
           />
       </View>
+        <KeyboardAvoidingView
+        behavior={Platform.OS == "android" ? "padding" : "height"}
+        keyboardVerticalOffset={-40}
+        >
+      
       <View style = {Estilo.Inputs} >
         <Input 
         label=" Seu Email:" 
@@ -68,11 +86,13 @@ export default class LogIn extends Component {
         leftIcon={{type: "font-awsome", name: "lock"}} secureTextEntry={true} placeholder="******"
         onChangeText={password => this.setState({password})}
         />
+        <View style={{marginTop:1}}/>
         <Button 
         buttonStyle={{backgroundColor:"#404CB1"}} 
         raised 
         type="solid" 
         title="Entrar" 
+        loading={this.state.isLoading}
         onPress={this.login}
         />
         <Button 
@@ -90,6 +110,7 @@ export default class LogIn extends Component {
         onPress={() =>this.props.navigation.navigate("Registro")}
         />
     </View>
+    </KeyboardAvoidingView>
       </SafeAreaView>
       
     );
