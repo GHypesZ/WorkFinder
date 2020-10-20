@@ -13,10 +13,8 @@ export default class Home extends Component{
         return(
             <SafeAreaView>
                 <StatusBar barStyle="light-content" backgroundColor="#404CB1"/>
-                <View style={[Estilo.BoxTitulo]}>
-                    <Text style={[Estilo.textoGrandeBranco]}>WorkFinder Categorias</Text>
-                    <View style={[Estilo.espacadorDez]}/>
-                </View>
+                <Text style={{alignSelf:"center", fontSize:20, fontWeight:"bold", color:"#404CB1", marginVertical:20}}>Áreas de Atuação</Text>
+
                 <ScrollView>
                     <View style={Estilo.Grid}>
                         <TouchableOpacity onPress={() =>this.props.navigation.push("Listagem",  {area: 'Engenharia',})}>

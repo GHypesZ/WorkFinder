@@ -2,12 +2,13 @@ import React, {Component} from "react";
 import {Text,
 View,
 StatusBar,
-TouchableOpacity
+ActivityIndicator
 } from "react-native";
 import Estilos from "../Styles";
 import SafeAreaView from 'react-native-safe-area-view';
 import auth from "@react-native-firebase/auth";
 import firestore from '@react-native-firebase/firestore';
+import {Button, Overlay} from "react-native-elements"
 
 
 export default class Profile extends Component {
@@ -19,7 +20,8 @@ export default class Profile extends Component {
             faculdade:"",
             especialidade:"",
             disponivel:"",
-            numero:""  
+            numero:"" ,
+            isLoading:true
     	}
     constructor(){
         super();
@@ -43,17 +45,23 @@ export default class Profile extends Component {
                         faculdade:users[0].faculdade,
                         especialidade:users[0].especialidade,
                         disponivel:users[0].disponivel,
-                        numero:users[0].numero
+                        numero:users[0].numero,
+                        isLoading:false
                     });
                   });
     }
     render(){
         return(
             <SafeAreaView style={Estilos.safe}>
+                <Overlay isVisible={this.state.isLoading}>
+                <Text>Carregando...</Text>
+                <ActivityIndicator 
+                animating={this.state.isLoading}
+                color="#404CB1"
+                />
+                </Overlay>
                 <StatusBar barStyle="light-content" backgroundColor="#404CB1"/>
-                <View style={[Estilos.BoxTitulo]}>
-                    <Text style={[Estilos.textoGrandeBranco]}>Seu Perfil</Text>            
-            	</View>
+                <Text style={{alignSelf:"center", fontSize:20, fontWeight:"bold", color:"#404CB1", marginVertical:20}}>Seu Perfil</Text>
                 <View style = {Estilos.fotoPerfil} >
                     <Text style = {[Estilos.textoMedioBranco]} > Foto </Text>
                 </View>
@@ -72,10 +80,13 @@ export default class Profile extends Component {
                     <Text style={[Estilos.TextoNormal]}>{this.state.disponivel}</Text>
                     <Text style={Estilos.TituloTextBox}>Email: </Text>
                     <Text style={[Estilos.TextoNormal]}>{this.state.email}</Text>
-
-                    <TouchableOpacity onPress={()=> this.props.navigation.navigate("Update Info")}>
-                        <Text style={Estilos.btnExtras}>Editar Info</Text>
-                    </TouchableOpacity>
+                    <Button
+                    title="Editar Informações"
+                    type="clear"
+                    raised 
+                    titleStyle={{color:"#404CB1", textDecorationLine: "underline",}}
+                    onPress={()=> this.props.navigation.navigate("Update Info")}
+                    />
                 </View>
                 
             </SafeAreaView>

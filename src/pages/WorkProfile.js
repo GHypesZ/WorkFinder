@@ -2,7 +2,6 @@ import React, {Component} from "react";
 import {Text,
 View,
 StatusBar,
-TouchableOpacity,
 FlatList
 } from "react-native";
 import Estilos from "../Styles";
@@ -12,13 +11,10 @@ import SafeAreaView from 'react-native-safe-area-view';
 
 export default function WorkProfile({route}){
 
-
         return(
             <SafeAreaView style={Estilos.safe}>
                 <StatusBar barStyle="light-content" backgroundColor="#404CB1"/>
-                <View style={[Estilos.BoxTitulo]}>
-                    <Text style={[Estilos.textoGrandeBranco]}>Perfil</Text>            
-            	</View>
+                <Text style={{alignSelf:"center", fontSize:20, fontWeight:"bold", color:"#404CB1", marginVertical:20}}>Perfil do Profissional</Text>
                 <View style = {Estilos.fotoPerfil} >
                     <Text style = {[Estilos.textoMedioBranco]} > Foto </Text>
                 </View>

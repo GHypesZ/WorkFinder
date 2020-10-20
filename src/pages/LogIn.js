@@ -59,8 +59,8 @@ export default class LogIn extends Component {
     return(
       <SafeAreaView style = {[Estilo.tela]}>
         <StatusBar 
-        barStyle="dark-content" 
-        backgroundColor="#EFEFEF"
+        barStyle="light-content" 
+        backgroundColor="#404CB1"
         />
         <View style={Estilo.tela1}>
           <Image 

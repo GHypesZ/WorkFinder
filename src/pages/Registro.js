@@ -13,7 +13,7 @@ import {
 import Estilo from "../Styles";
 import auth from "@react-native-firebase/auth";
 import firestore from '@react-native-firebase/firestore';
-import {Input, Button, Image, Header} from "react-native-elements"
+import {Input, Button, Image} from "react-native-elements"
 
 
 export default class Registro extends Component{
@@ -72,25 +72,20 @@ export default class Registro extends Component{
 
     render(){
         return(
-            <SafeAreaView >
-                 <Header 
-                centerComponent={{text:"Criar Conta", style:{color:"#ffffff",fontSize:24}}}
-                containerStyle={{backgroundColor:"#404CB1",
-                justifyContent:"center",
-                }}
-                />                
+            <SafeAreaView >           
                 <KeyboardAvoidingView
                 behavior="position"
-                keyboardVerticalOffset={-60}
+                keyboardVerticalOffset={-50}
                 style={{justifyContent:"center", alignItems:"center"}}>
                        
-                <StatusBar barStyle="light-content" backgroundColor="#404CB1"/>
+                <StatusBar barStyle="light-content" backgroundColor="#404CB1"/>   
                     <View style={{alignItems:"center"}}>
                         <Image
                         source={require("../imagens/LogoWorkFinderAzul.png")} 
                         resizeMode= "stretch" 
-                        style={{width:250, height:200, marginBottom:100, marginTop:20}}
+                        style={{width:250, height:200, marginBottom:70, marginTop:20}}
                         />
+                        <Text style={{fontSize:20, color:"#404CB1", fontWeight:"bold",marginBottom:20}}>Criar uma Conta</Text>
                     </View>
                     <View style={Estilo.Inputs}>
                     <Input  

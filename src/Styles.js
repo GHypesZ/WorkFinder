@@ -53,27 +53,6 @@ export default StyleSheet.create({
         marginTop: 10,
         width:330
       },
-      btnEntrar:{
-        "alignItems": "center",
-        justifyContent:"center",
-        "width": 195,
-        "height": 40,
-        "borderRadius": 10,
-        "backgroundColor": "#404CB1"
-      },
-      btnExtras:{
-        "fontFamily": "Georgia",
-        "fontSize": 16,
-        "textDecorationLine": "underline",
-        "color": "#404CB1",
-      },
-      BoxTitulo:{
-        height: 40,
-        width:500,
-        backgroundColor:"#404CB1", 
-        alignItems:"center", 
-        paddingBottom:10
-      },
       textoGrandeBranco:{
         "fontFamily": "Georgia",
         "fontSize": 24,
@@ -117,7 +96,7 @@ export default StyleSheet.create({
       alignItems: "center",
       justifyContent: "center",
       alignSelf: "center",
-      marginVertical: 20,
+      marginBottom: 20,
       "width": 150,
       "height": 150,
       "borderRadius": 100,
@@ -137,16 +116,7 @@ export default StyleSheet.create({
       marginTop:10,
       backgroundColor:"#EFEFEF"
     },
-    TextoLista:{
-      flex: 1,
-      paddingRight:30,
-      flexWrap:"wrap", 
-      flexShrink:1,
-      flexDirection:"column",
-      margin:10,
-      justifyContent:"flex-start",
-      alignItems:"flex-start"
-    },
+
     TextoNormal:{
       fontSize:18
     }
