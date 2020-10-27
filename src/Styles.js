@@ -12,29 +12,16 @@ export default StyleSheet.create({
             "fontSize": 18,
             "color": "#000000bd"
     },
-    textBoxLogIn:{
-        "alignItems": "flex-start",
-        justifyContent:"center",
-        "opacity": 0.56,
-        "width": 311,
-        "height": 40,
-        "borderRadius": 5,
-        "borderWidth": 1,
-        "borderColor": "rgba(0, 0, 0, 64)",
-        "backgroundColor": "rgba(170, 170, 170, 140)",
-        color: "#000000",
-        "fontSize": 18,
-    },
       tela:{
         alignItems: "center",
         justifyContent: "center",
         flex: 1,
-        backgroundColor: "#EFEFEF"
+        backgroundColor: "#FFFFFF"
       },
       tela1:{
         alignItems: "center",
         justifyContent: "center",
-        backgroundColor: "#EFEFEF",
+        backgroundColor: "#FFFFFF",
       },
       Logo:{
         "alignItems": "center",
@@ -64,6 +51,7 @@ export default StyleSheet.create({
       flexWrap : "wrap",
       justifyContent: "center",
       alignItems: "center",
+      backgroundColor:"#FFFFFF"
     },
     BoxImagem:{
         margin:10,
@@ -72,7 +60,7 @@ export default StyleSheet.create({
         borderColor: "#404CB1",
         borderWidth:2,
         borderRadius: 5,
-        backgroundColor: "#E5E5E5"
+        backgroundColor: "#EFEFEF"
     },
     TextoMedioPreto:{
       fontSize: 18,
@@ -80,6 +68,7 @@ export default StyleSheet.create({
     },
     safe:{
       flex:1,
+      backgroundColor:"#FFFFFF"
     },
     TituloTextBox:{
       alignItems: "flex-start",
@@ -90,7 +79,7 @@ export default StyleSheet.create({
       alignItems: "flex-start",
       marginLeft: 20,
       flex: 1,
-      backgroundColor: "#EFEFEF"
+      backgroundColor: "#FFFFFF"
     },
     fotoPerfil:{
       alignItems: "center",
@@ -114,7 +103,7 @@ export default StyleSheet.create({
       marginHorizontal:10, 
       padding:10, 
       marginTop:10,
-      backgroundColor:"#EFEFEF"
+      backgroundColor:"#FFFFFF"
     },
 
     TextoNormal:{

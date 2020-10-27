@@ -8,7 +8,7 @@ import Estilos from "../Styles";
 import SafeAreaView from 'react-native-safe-area-view';
 import auth from "@react-native-firebase/auth";
 import firestore from '@react-native-firebase/firestore';
-import {Button, Overlay} from "react-native-elements"
+import {Button, Rating} from "react-native-elements"
 
 
 export default class Profile extends Component {
@@ -21,7 +21,8 @@ export default class Profile extends Component {
             especialidade:"",
             disponivel:"",
             numero:"" ,
-            isLoading:true
+            isLoading:true,
+            Rating:""
     	}
     constructor(){
         super();
@@ -46,20 +47,14 @@ export default class Profile extends Component {
                         especialidade:users[0].especialidade,
                         disponivel:users[0].disponivel,
                         numero:users[0].numero,
-                        isLoading:false
+                        isLoading:false,
+                        Rating:users[0].rating
                     });
                   });
     }
     render(){
         return(
             <SafeAreaView style={Estilos.safe}>
-                <Overlay isVisible={this.state.isLoading}>
-                <Text>Carregando...</Text>
-                <ActivityIndicator 
-                animating={this.state.isLoading}
-                color="#404CB1"
-                />
-                </Overlay>
                 <StatusBar barStyle="light-content" backgroundColor="#404CB1"/>
                 <Text style={{alignSelf:"center", fontSize:20, fontWeight:"bold", color:"#404CB1", marginVertical:20}}>Seu Perfil</Text>
                 <View style = {Estilos.fotoPerfil} >
@@ -80,6 +75,12 @@ export default class Profile extends Component {
                     <Text style={[Estilos.TextoNormal]}>{this.state.disponivel}</Text>
                     <Text style={Estilos.TituloTextBox}>Email: </Text>
                     <Text style={[Estilos.TextoNormal]}>{this.state.email}</Text>
+                    <Rating 
+                    showRating
+                    readonly
+                    startingValue={this.state.Rating}
+                    imageSize={25}
+                    />
                     <Button
                     title="Editar Informações"
                     type="clear"

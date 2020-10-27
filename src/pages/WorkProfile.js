@@ -6,6 +6,7 @@ FlatList
 } from "react-native";
 import Estilos from "../Styles";
 import SafeAreaView from 'react-native-safe-area-view';
+import { Rating } from 'react-native-elements';
 
 
 
@@ -31,6 +32,14 @@ export default function WorkProfile({route}){
                     <Text style={[Estilos.TextoNormal]}>{route.params.especi}</Text>
                     <Text style={Estilos.TituloTextBox}>Email: </Text>
                     <Text style={[Estilos.TextoNormal]}>{route.params.Email}</Text>
+                    <Rating 
+                    showRating
+                    type="star"
+                    ratingCount={5}
+                    imageSize={25}
+                    readonly
+                    startingValue={route.params.Rating}
+                    />
                 </View>
                 <View>
                     <FlatList>

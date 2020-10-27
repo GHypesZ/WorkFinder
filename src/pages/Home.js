@@ -11,7 +11,7 @@ export default class Home extends Component{
         }
     render(){
         return(
-            <SafeAreaView>
+            <SafeAreaView style={[Estilo.safe]}>
                 <StatusBar barStyle="light-content" backgroundColor="#404CB1"/>
                 <Text style={{alignSelf:"center", fontSize:20, fontWeight:"bold", color:"#404CB1", marginVertical:20}}>Áreas de Atuação</Text>
 

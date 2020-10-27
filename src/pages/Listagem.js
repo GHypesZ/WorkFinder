@@ -36,7 +36,7 @@ export default function Listagem({navigation}){
             }, []);
 
         return(
-            <SafeAreaView>
+            <SafeAreaView style={[Estilo.safe]}>
                 <StatusBar barStyle="light-content" backgroundColor="#404CB1"/>
                 <Text 
                 style={{alignSelf:"center", fontSize:20, fontWeight:"bold", color:"#404CB1", marginVertical:20}}>Lista de Profissionais de {area}</Text>
@@ -48,12 +48,16 @@ export default function Listagem({navigation}){
                       areadeAtuacao: item.areaAtuacao,
                       facul: item.faculdade,
                       especi: item.especialidade,
-                      Email: item.email
+                      Email: item.email,
+                      Rating: item.rating
                       })}>
                         <ListItem bottomDivider>
-                          <Avatar
+                        <Avatar
+                          size="medium"
                           rounded
-                          icon={{name:"account-circle"}}
+                          title={item.nome[0]}
+                          titleStyle={{color:"#CFCFCF"}}
+                          containerStyle={{backgroundColor:"#EFEFEF"}}
                           />
                           <ListItem.Content>
                             <ListItem.Title>{item.nome}</ListItem.Title>
